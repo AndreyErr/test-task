@@ -1,0 +1,10 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+  php-env:
+    build: ./web
+    volumes: 
+      - ./web:/var/www/html
+    ports:
+      - 9000:80
