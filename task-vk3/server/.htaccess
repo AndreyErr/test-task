@@ -1,0 +1,9 @@
+# Принудительное задание кодировки
+AddDefaultCharset utf-8
+
+# Включение движка редиректа
+RewriteEngine On
+# Базовый URL для преобразований (даем серверу знать что мы работаем через /)
+RewriteBase /
+
+RewriteRule ^(.*)$ index.php [NC,L]

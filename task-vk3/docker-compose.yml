@@ -1,0 +1,26 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+  php-env:
+    build: ./server-config/apache
+    volumes: 
+      - ./server:/var/www/html
+    ports:
+      - 9000:80
+
+  Mysql_db:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+    volumes: 
+        - ./server-config/init:/docker-entrypoint-initdb.d
+  
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8082:80
+    environment:
+      - PMA_ARBITRARY=1

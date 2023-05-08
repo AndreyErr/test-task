@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "a02de1ee-4be8-4d38-8a0f-ba56d863581c",
+		"name": "test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26442038"
+	},
+	"item": [
+		{
+			"name": "save_event",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"event_name\": \"aaabcd\",\r\n    \"user_status\": \"authorized\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/save_event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"save_event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save_event false status",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"event_name\": \"aaabcd\",\r\n    \"user_status\": \"unauthorized\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/save_event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"save_event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save_event wrong 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"event_name\": \"aaabcd\",\r\n    \"user_status\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/save_event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"save_event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save_event wrong 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"event_name\": \"aaabcd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/save_event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"save_event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_statistics event",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/get_statistics?event_name=aaabcd&start_date=2023-05-08&end_date=2023-05-09&aggregate_by=event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"get_statistics"
+					],
+					"query": [
+						{
+							"key": "event_name",
+							"value": "aaabcd"
+						},
+						{
+							"key": "start_date",
+							"value": "2023-05-08"
+						},
+						{
+							"key": "end_date",
+							"value": "2023-05-09"
+						},
+						{
+							"key": "aggregate_by",
+							"value": "event"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_statistics user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/get_statistics?event_name=aaabcd&start_date=2023-05-08&end_date=2023-05-09&aggregate_by=user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"get_statistics"
+					],
+					"query": [
+						{
+							"key": "event_name",
+							"value": "aaabcd"
+						},
+						{
+							"key": "start_date",
+							"value": "2023-05-08"
+						},
+						{
+							"key": "end_date",
+							"value": "2023-05-09"
+						},
+						{
+							"key": "aggregate_by",
+							"value": "user"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_statistics user change date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/get_statistics?event_name=aaabcd&start_date=2023-05-09&end_date=2023-05-09&aggregate_by=user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"get_statistics"
+					],
+					"query": [
+						{
+							"key": "event_name",
+							"value": "aaabcd"
+						},
+						{
+							"key": "start_date",
+							"value": "2023-05-09"
+						},
+						{
+							"key": "end_date",
+							"value": "2023-05-09"
+						},
+						{
+							"key": "aggregate_by",
+							"value": "user"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_statistics status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/get_statistics?event_name=aaabcd&start_date=2023-05-08&end_date=2023-05-09&aggregate_by=status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"get_statistics"
+					],
+					"query": [
+						{
+							"key": "event_name",
+							"value": "aaabcd"
+						},
+						{
+							"key": "start_date",
+							"value": "2023-05-08"
+						},
+						{
+							"key": "end_date",
+							"value": "2023-05-09"
+						},
+						{
+							"key": "aggregate_by",
+							"value": "status"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_statistics wrong 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/get_statistics?event_name=aaabcd&aggregate_by=status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"get_statistics"
+					],
+					"query": [
+						{
+							"key": "event_name",
+							"value": "aaabcd"
+						},
+						{
+							"key": "aggregate_by",
+							"value": "status"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_statistics wrong 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/get_statistics?event_name=aaabcd&start_date=2023-05-08&end_date=2023-05-09&aggregate_by=lol",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"get_statistics"
+					],
+					"query": [
+						{
+							"key": "event_name",
+							"value": "aaabcd"
+						},
+						{
+							"key": "start_date",
+							"value": "2023-05-08"
+						},
+						{
+							"key": "end_date",
+							"value": "2023-05-09"
+						},
+						{
+							"key": "aggregate_by",
+							"value": "lol"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_statistics wrong 3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/get_statistics?event_name=aaabcd&start_date=2023-05-08&end_date=2023-05-09",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"get_statistics"
+					],
+					"query": [
+						{
+							"key": "event_name",
+							"value": "aaabcd"
+						},
+						{
+							"key": "start_date",
+							"value": "2023-05-08"
+						},
+						{
+							"key": "end_date",
+							"value": "2023-05-09"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
