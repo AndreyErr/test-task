@@ -14,18 +14,14 @@ if($path[0] == 'save_event'){
         $dataInput = json_decode(file_get_contents('php://input'), true);
         if (isset($dataInput['event_name']) && isset($dataInput['user_status']) && $dataInput['event_name'] != '' 
             && $dataInput['user_status'] != ''){
-            try{
-                $status = $dataInput['user_status'] == 'authorized';
-                $mysqli = openMysqli();
-                $stmt = $mysqli->prepare("INSERT INTO events VALUES (NULL, ?, ?, ?, NOW())");
-                $stmt->bind_param("sis", $dataInput["event_name"], $status, $_SERVER['REMOTE_ADDR']);
-                $stmt->execute();
-                $stmt->close();
-                $code = 200;
-                $data = ['SUCCESS' => 'Удачно'];
-            }catch(Exception $e){
-                $data = ['SQL_INPUT_ERROR' => 'Ошибка работы sql: '. $e];
-            }
+            $status = $dataInput['user_status'] == 'authorized';
+            $mysqli = openMysqli();
+            $stmt = $mysqli->prepare("INSERT INTO events VALUES (NULL, ?, ?, ?, NOW())");
+            $stmt->bind_param("sis", $dataInput["event_name"], $status, $_SERVER['REMOTE_ADDR']);
+            $stmt->execute();
+            $stmt->close();
+            $code = 200;
+            $data = ['SUCCESS' => 'Удачно'];
         }else{
             $code = 400;
             $data = ['NOT_CORRECT_DATA' => 'Не правильно переданы параметры (требуется event_name типа varchar и user_status типа varchar)'];
@@ -43,8 +39,6 @@ if($path[0] == 'save_event'){
     if($_SERVER["REQUEST_METHOD"]=="GET"){
         if (isset($_GET['event_name']) && isset($_GET['start_date']) && isset($_GET['end_date']) && isset($_GET['aggregate_by']) 
             && $_GET['event_name'] != '' && $_GET['start_date'] != '' && $_GET['end_date'] != '' && $_GET['aggregate_by'] != ''){
-            
-        
             $mysqli = openMysqli();
             $event_name = $mysqli->real_escape_string($_GET['event_name']);
             $start_date = $mysqli->real_escape_string($_GET['start_date']);
